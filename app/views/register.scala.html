@@ -1,0 +1,130 @@
+@(registerForm: Form[controllers.User], validator : String)
+
+@main("Register") {
+  <h2 align="center">Registration Form</h2>
+  <br/><br/> 
+<form class="eight columns offset-by-three" method="POST" action="@routes.Registration.processReg" id="regForm">
+
+<div class="row">
+	<div class="nine columns">
+   		 <div class="row collapse">
+ 			 <div class="nine columns push-three">
+   			 <input required="required" type="text" name="fname"  value="@registerForm("fname").value">
+ 			 </div>
+ 			 <div class="three columns pull-nine">
+ 			<label class="left inline">First Name: </label>
+			</div>
+ 		 </div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="nine columns">
+   		 <div class="row collapse">
+ 			 <div class="nine columns push-three">
+   			 <input required="required" type="text" name="lname"  value="@registerForm("lname").value">
+ 			 </div>
+ 			 <div class="three columns pull-nine">
+			 <label class="left inline">Last Name: </label>
+ 			</div>
+ 		 </div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="nine columns">
+   		 <div class="row collapse">
+ 			 <div class="nine columns push-three">
+   			   <input type="text" required="required" name="add"  value="@registerForm("add").value">
+              <input type="text"  >
+			  <input type="text"  > 
+ 			 </div>
+ 			 <div class="three columns pull-nine">
+ 			<label class="left inline">Address: </label>
+			</div>
+ 		 </div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="nine columns">
+   		 <div class="row collapse">
+ 			 <div class="nine columns push-three">
+   			  <input required="required" type="date" name="bdate"  value="@registerForm("bdate").value"> 
+ 			 </div>
+ 			 <div class="three columns pull-nine">
+ 			<label class="left inline">Birth Date:</label>
+			</div>
+ 		 </div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="nine columns">
+   		 <div class="row collapse">
+ 			 <div class="nine columns push-three">
+   			 <input required="required" type="text" name="cnum"  value="@registerForm("cnum").value">
+ 			 </div>
+ 			 <div class="three columns pull-nine">
+ 			  <label class="left inline">Contact Number: </label>
+			</div>
+ 		 </div>
+	</div>
+</div>
+
+
+<br/>
+<br/>
+		<div class="five columns centered">
+    <input type="submit" class="radius button "value="Register" onclick="return Validate()"/>
+
+     </div>
+      </form>
+          
+</div>
+
+
+      
+    </form>
+}
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    @if(validator == "TRUE"){
+    	$("#myModal").reveal();
+    }
+  
+  });
+  function Validate()
+  {
+          var x = document.sform.phone_no.value;
+         
+          if (x==null || x=="")
+   	 {
+   		 alert("Phone no. cannot be left blank");
+   		 return false;
+   	 }       
+
+         	 if(isNaN(x)|| x.indexOf(" ")!=-1)
+  	{
+                			alert("Enter numeric value");
+  			return false;
+                  }
+         			 if (x.length > 10)
+  			{
+                  			alert("enter 10 characters"); 
+  				return false;
+            			 }
+         
+  }
+
+</script>
+
+ <div id="myModal" class="reveal-modal [expand]">
+  <h2>Sample Message</h2>
+  <p class="lead">You Have Successfully Registered.</p>
+  <p> Thank you! </p>
+  <a class="close-reveal-modal">&#215;</a>
+  <a href="@routes.Login.index" class="radius button" >Login</a>
+</div>
+
