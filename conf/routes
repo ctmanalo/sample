@@ -6,7 +6,7 @@
 GET     /                           controllers.Application.index
 
 GET     /register                   controllers.Registration.index(validator : String)
-POST 	/register					controllers.Registration.processReg
+POST 	/register					            controllers.Registration.processReg
 
 GET     /login                		 controllers.Login.index
 
